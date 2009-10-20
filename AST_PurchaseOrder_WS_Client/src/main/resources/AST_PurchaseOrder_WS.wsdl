@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:AST_PurchaseOrder_WS"
+	xmlns:ns0="http://tempuri.org" xmlns:s0="urn:AST_PurchaseOrder_WS"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified" targetNamespace="urn:AST_PurchaseOrder_WS">
+			<xsd:import namespace="http://tempuri.org" />
+			<xsd:element name="Get_Specific_PO"
+				type="ns0:PurchaseOrderQueryBySupplierAndPONumberInputMapping" />
+			<xsd:element name="Get_Specific_POResponse" type="ns0:PurchaseOrderOutputMapping" />
+			<xsd:element name="Update_PO_Confirmation" type="ns0:UpdatePOConfirmInputMapping" />
+			<xsd:element name="Update_PO_ConfirmationResponse" type="s0:SetOutputMap" />
+			<xsd:complexType name="SetOutputMap">
+				<xsd:sequence />
+			</xsd:complexType>
+			<xsd:element name="Get_List_Of_New_POs"
+				type="ns0:PurchaseOrderQueryBySupplierInputMapping" />
+			<xsd:element name="Get_List_Of_New_POsResponse" type="ns0:PurchaseOrderOutputMapping" />
+			<xsd:element name="AuthenticationInfo" type="s0:AuthenticationInfo" />
+			<xsd:complexType name="AuthenticationInfo">
+				<xsd:sequence>
+					<xsd:element name="userName" type="xsd:string" />
+					<xsd:element name="password" type="xsd:string" />
+					<xsd:element minOccurs="0" name="authentication" type="xsd:string" />
+					<xsd:element minOccurs="0" name="locale" type="xsd:string" />
+					<xsd:element minOccurs="0" name="timeZone" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xs:schema attributeFormDefault="unqualified"
+			elementFormDefault="qualified" targetNamespace="http://tempuri.org"
+			xmlns="http://tempuri.org" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+			<xs:complexType name="UpdatePOConfirmInputMapping">
+
+
+				<xs:sequence>
+
+
+					<xs:element name="POID" type="xs:string" />
+
+
+					<xs:element name="Supplier" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="PONumber" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="FreightTerms" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="ShipVia" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="ShippingOption" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="ShippingCost.MonetaryAmount"
+						type="xs:decimal" />
+
+
+					<xs:element minOccurs="0" name="ShippingCost.CurrencyCode"
+						type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="TaxRate" type="xs:decimal" />
+
+
+					<xs:element minOccurs="0" name="OrderConfirmationTypeCode"
+						type="xs:string" />
+
+
+					<xs:element ref="UpdatePOConfirmInputMappingLineItems" />
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:complexType name="PurchaseOrderQueryBySupplierInputMapping">
+
+
+				<xs:sequence>
+
+
+					<xs:element name="Supplier" type="xs:string" />
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:complexType name="PurchaseOrderQueryBySupplierAndPONumberInputMapping">
+
+
+				<xs:sequence>
+
+
+					<xs:element name="PONumber" type="xs:string" />
+
+
+					<xs:element name="Supplier" type="xs:string" />
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:complexType name="PurchaseOrderOutputMapping">
+
+
+				<xs:sequence>
+
+
+					<xs:element maxOccurs="unbounded" name="getListValues">
+
+
+						<xs:complexType>
+
+
+							<xs:sequence>
+
+
+								<xs:element name="POID" type="xs:string" />
+
+
+								<xs:element name="PONumber" type="xs:string" />
+
+
+								<xs:element name="POStatus" type="xs:string" />
+
+
+								<xs:element name="DateOrdered" type="xs:dateTime" />
+
+
+								<xs:element name="Supplier" type="xs:string" />
+
+
+								<xs:element name="Buyer" type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="NotesToSupplier"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="FreightTerms" type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShipVia" type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingOption" type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingCost.MonetaryAmount"
+									type="xs:decimal" />
+
+
+								<xs:element minOccurs="0" name="ShippingCost.CurrencyCode"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="TotalPrice.MonetaryAmount"
+									type="xs:decimal" />
+
+
+								<xs:element minOccurs="0" name="TotalPrice.CurrencyCode"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="BillingTo.AddressLine1"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="BillingTo.AddressCity"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="BillingTo.AddressState"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="BillingTo.AddressPostalCode"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="BillingTo.AddressCountry"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingTo.AddressLine1"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingTo.AddressCity"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingTo.AddressState"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingTo.AddressPostalCode"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="ShippingTo.AddressCountry"
+									type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="OrderConfirmationTypeCode"
+									type="xs:string" />
+
+
+								<xs:element ref="Items" />
+
+
+							</xs:sequence>
+
+
+						</xs:complexType>
+
+
+					</xs:element>
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:complexType name="LineItemOutput">
+
+
+				<xs:sequence>
+
+
+					<xs:element name="ItemID" type="xs:string" />
+
+
+					<xs:element name="PartNumber" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="ItemDescription" type="xs:string" />
+
+
+					<xs:element name="ItemStatus" type="xs:string" />
+
+
+					<xs:element name="Quantity" type="xs:int" />
+
+
+					<xs:element minOccurs="0" name="ProductUnitOfMeasureCode"
+						type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="UnitPrice.MonetaryAmount"
+						type="xs:decimal" />
+
+
+					<xs:element minOccurs="0" name="UnitPrice.CurrencyCode"
+						type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="QuoteNumber" type="xs:string" />
+
+
+					<xs:element minOccurs="0" name="Taxable" type="xs:string" />
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:element name="Item" type="LineItemOutput" />
+
+
+			<xs:element name="Items">
+
+
+				<xs:complexType>
+
+
+					<xs:sequence>
+
+
+						<xs:element maxOccurs="unbounded" minOccurs="0" ref="Item" />
+
+
+					</xs:sequence>
+
+
+				</xs:complexType>
+
+
+			</xs:element>
+
+
+			<xs:complexType name="UpdatePOConfirmInputMappingLineItemType">
+
+
+				<xs:sequence>
+
+
+					<xs:element maxOccurs="unbounded" name="getListValues">
+
+
+						<xs:complexType>
+
+
+							<xs:sequence>
+
+
+								<xs:element name="ItemID" type="xs:string" />
+
+
+								<xs:element minOccurs="0" name="UnitPrice.MonetaryAmount"
+									type="xs:decimal" />
+
+
+								<xs:element minOccurs="0" name="UnitPrice.CurrencyCode"
+									type="xs:string" />
+
+
+							</xs:sequence>
+
+
+						</xs:complexType>
+
+
+					</xs:element>
+
+
+				</xs:sequence>
+
+
+			</xs:complexType>
+
+
+			<xs:element name="UpdatePOConfirmInputMappingLineItem"
+				type="UpdatePOConfirmInputMappingLineItemType" />
+
+
+			<xs:element name="UpdatePOConfirmInputMappingLineItems">
+
+
+				<xs:complexType>
+
+
+					<xs:sequence>
+
+
+						<xs:element maxOccurs="unbounded" minOccurs="0"
+							ref="UpdatePOConfirmInputMappingLineItem" />
+
+
+					</xs:sequence>
+
+
+				</xs:complexType>
+
+
+			</xs:element>
+
+
+		</xs:schema>
+	</wsdl:types>
+
+	<wsdl:message name="Update_PO_ConfirmationSoapOut">
+
+		<wsdl:part element="s0:Update_PO_ConfirmationResponse" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="Get_Specific_POSoapIn">
+
+		<wsdl:part element="s0:Get_Specific_PO" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="Get_List_Of_New_POsSoapIn">
+
+		<wsdl:part element="s0:Get_List_Of_New_POs" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="ARAuthenticate">
+
+		<wsdl:part element="s0:AuthenticationInfo" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="Get_List_Of_New_POsSoapOut">
+
+		<wsdl:part element="s0:Get_List_Of_New_POsResponse" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="Get_Specific_POSoapOut">
+
+		<wsdl:part element="s0:Get_Specific_POResponse" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:message name="Update_PO_ConfirmationSoapIn">
+
+		<wsdl:part element="s0:Update_PO_Confirmation" name="parameters" />
+
+	</wsdl:message>
+
+	<wsdl:portType name="AST_PurchaseOrder_WSPortType">
+
+		<wsdl:operation name="Get_Specific_PO">
+
+			<wsdl:input message="s0:Get_Specific_POSoapIn" />
+
+			<wsdl:output message="s0:Get_Specific_POSoapOut" />
+
+		</wsdl:operation>
+
+		<wsdl:operation name="Update_PO_Confirmation">
+
+			<wsdl:input message="s0:Update_PO_ConfirmationSoapIn" />
+
+			<wsdl:output message="s0:Update_PO_ConfirmationSoapOut" />
+
+		</wsdl:operation>
+
+		<wsdl:operation name="Get_List_Of_New_POs">
+
+			<wsdl:input message="s0:Get_List_Of_New_POsSoapIn" />
+
+			<wsdl:output message="s0:Get_List_Of_New_POsSoapOut" />
+
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="AST_PurchaseOrder_WSSoapBinding" type="s0:AST_PurchaseOrder_WSPortType">
+
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="Get_Specific_PO">
+
+			<soap:operation soapAction="urn:AST_PurchaseOrder_WS/Get_Specific_PO"
+				style="document" />
+
+			<wsdl:input>
+
+				<soap:header message="s0:ARAuthenticate" part="parameters"
+					use="literal">
+
+				</soap:header>
+
+				<soap:body use="literal" />
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<soap:body use="literal" />
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="Update_PO_Confirmation">
+
+			<soap:operation soapAction="urn:AST_PurchaseOrder_WS/Update_PO_Confirmation"
+				style="document" />
+
+			<wsdl:input>
+
+				<soap:header message="s0:ARAuthenticate" part="parameters"
+					use="literal">
+
+				</soap:header>
+
+				<soap:body use="literal" />
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<soap:body use="literal" />
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="Get_List_Of_New_POs">
+
+			<soap:operation soapAction="urn:AST_PurchaseOrder_WS/Get_List_Of_New_POs"
+				style="document" />
+
+			<wsdl:input>
+
+				<soap:header message="s0:ARAuthenticate" part="parameters"
+					use="literal">
+
+				</soap:header>
+
+				<soap:body use="literal" />
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<soap:body use="literal" />
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="AST_PurchaseOrder_WSService">
+
+		<wsdl:documentation>
+			Query and Update Purchase Orders.  </wsdl:documentation>
+
+		<wsdl:port binding="s0:AST_PurchaseOrder_WSSoapBinding"
+			name="AST_PurchaseOrder_WSSoap">
+
+			<soap:address
+				location="http://configuracion.tsm.inet/arsys/services/ARService?server=fsg0x021.tsm.inet&amp;webService=AST_PurchaseOrder_WS" />
+
+		</wsdl:port>
+
+	</wsdl:service>
+
+</wsdl:definitions>
